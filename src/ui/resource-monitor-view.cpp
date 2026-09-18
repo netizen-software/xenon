@@ -11,7 +11,7 @@ constexpr char VIEW_ID[] = "resource_monitor_view";
 constexpr char CPU_VALUE_ID[] = "cpu_value";
 constexpr char MEMORY_VALUE_ID[] = "memory_value";
 
-}
+}  // namespace
 
 namespace xenon {
 
@@ -37,9 +37,7 @@ ResourceMonitorView::~ResourceMonitorView() {
     g_object_unref(widget_);
 }
 
-GtkWidget* ResourceMonitorView::getWidget() const {
-    return widget_;
-}
+GtkWidget* ResourceMonitorView::getWidget() const { return widget_; }
 
 gboolean ResourceMonitorView::onRefresh(gpointer userData) {
     static_cast<ResourceMonitorView*>(userData)->refresh();

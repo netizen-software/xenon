@@ -4,8 +4,8 @@
 #include <sstream>
 
 int main() {
-    const xenon::CpuTicks cpu = xenon::ResourceMonitor::parseCpuLine(
-        "cpu  470 20 140 700 30 10 15 5 0 0");
+    const xenon::CpuTicks cpu =
+        xenon::ResourceMonitor::parseCpuLine("cpu  470 20 140 700 30 10 15 5 0 0");
     assert(cpu.totalTicks == 1390);
     assert(cpu.idleTicks == 730);
 

@@ -15,9 +15,7 @@ Application::Application()
     g_signal_connect(application_, "activate", G_CALLBACK(Application::onActivate), this);
 }
 
-Application::~Application() {
-    g_object_unref(application_);
-}
+Application::~Application() { g_object_unref(application_); }
 
 int Application::run(int argc, char* argv[]) {
     return g_application_run(G_APPLICATION(application_), argc, argv);
