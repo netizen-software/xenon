@@ -25,7 +25,7 @@ MainWindow::MainWindow(AdwApplication* application)
     adw_header_bar_set_title_widget(headerBar, viewSwitcher);
     adw_toolbar_view_add_top_bar(toolbarView, GTK_WIDGET(headerBar));
     adw_toolbar_view_set_content(toolbarView, GTK_WIDGET(viewStack));
-    gtk_window_set_child(GTK_WINDOW(window_), GTK_WIDGET(toolbarView));
+    adw_application_window_set_content(window_, GTK_WIDGET(toolbarView));
 }
 
 MainWindow::~MainWindow() { g_object_unref(window_); }
