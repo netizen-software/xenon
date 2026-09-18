@@ -2,7 +2,10 @@ XENON_INCLUDE_DIR = include_directories('.')
 
 XENON_CORE = static_library(
   'xenon-core',
-  'core/resources/resource-monitor.cpp',
+  [
+    'core/processes/process-manager.cpp',
+    'core/resources/resource-monitor.cpp',
+  ],
   include_directories: XENON_INCLUDE_DIR,
 )
 
@@ -12,6 +15,7 @@ executable(
     'main.cpp',
     'application.cpp',
     'main-window.cpp',
+    'ui/process-manager-view.cpp',
     'ui/resource-monitor-view.cpp',
     XENON_RESOURCES,
   ],

@@ -23,13 +23,13 @@ struct ResourceUsage {
 };
 
 class ResourceMonitor {
-  public:
+   public:
     ResourceUsage sample();
 
     static CpuTicks parseCpuLine(std::string_view line);
     static MemoryStats parseMemoryInfo(std::istream& input);
 
-  private:
+   private:
     std::optional<CpuTicks> previousCpuTicks_;
 };
 

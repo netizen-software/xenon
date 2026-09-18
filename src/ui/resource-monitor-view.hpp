@@ -7,7 +7,7 @@
 namespace xenon {
 
 class ResourceMonitorView {
-  public:
+   public:
     ResourceMonitorView();
     ~ResourceMonitorView();
 
@@ -16,7 +16,7 @@ class ResourceMonitorView {
 
     GtkWidget* getWidget() const;
 
-  private:
+   private:
     static gboolean onRefresh(gpointer userData);
     void refresh();
 

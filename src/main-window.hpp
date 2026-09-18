@@ -6,10 +6,11 @@
 
 namespace xenon {
 
+class ProcessManagerView;
 class ResourceMonitorView;
 
 class MainWindow {
-  public:
+   public:
     explicit MainWindow(AdwApplication* application);
     ~MainWindow();
 
@@ -18,8 +19,9 @@ class MainWindow {
 
     void present() const;
 
-  private:
+   private:
     AdwApplicationWindow* window_;
+    std::unique_ptr<ProcessManagerView> processManagerView_;
     std::unique_ptr<ResourceMonitorView> resourceMonitorView_;
 };
 
