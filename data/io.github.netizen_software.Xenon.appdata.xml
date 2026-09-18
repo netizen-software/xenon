@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.netizen_software.Xenon</id>
+  <name>Xenon</name>
+  <summary>A focused system monitor for Linux</summary>
+  <developer_name>Netizen Software</developer_name>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>Unlicense</project_license>
+  <description>
+    <p>Xenon provides a fast, focused view of current CPU and memory usage on Linux systems.</p>
+  </description>
+  <url type="homepage">https://github.com/netizen-software/xenon</url>
+  <launchable type="desktop-id">io.github.netizen_software.Xenon.desktop</launchable>
+  <content_rating type="oars-1.1" />
+  <provides>
+    <binary>xenon</binary>
+  </provides>
+</component>
