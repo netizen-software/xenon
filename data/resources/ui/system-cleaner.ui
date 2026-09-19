@@ -3,6 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <object class="GtkBox" id="system_cleaner_view">
     <property name="orientation">vertical</property>
+    <style><class name="utility-view"/></style>
     <property name="spacing">18</property>
     <property name="margin-top">24</property>
     <property name="margin-bottom">24</property>
@@ -20,14 +21,14 @@
               <object class="GtkLabel">
                 <property name="label">System Cleaner</property>
                 <property name="xalign">0</property>
-                <style><class name="title-1"/></style>
+                <style><class name="view-title"/></style>
               </object>
             </child>
             <child>
               <object class="GtkLabel" id="status_label">
                 <property name="label">Inspecting cleanup data...</property>
                 <property name="xalign">0</property>
-                <style><class name="dim-label"/></style>
+                <style><class name="status-line"/></style>
               </object>
             </child>
           </object>
@@ -44,6 +45,7 @@
       <object class="GtkScrolledWindow">
         <property name="vexpand">true</property>
         <property name="hscrollbar-policy">never</property>
+        <style><class name="data-list"/></style>
         <child>
           <object class="GtkListBox" id="cleaner_list">
             <property name="selection-mode">none</property>

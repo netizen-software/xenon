@@ -3,6 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <object class="GtkBox" id="services_manager_view">
     <property name="orientation">vertical</property>
+    <style><class name="utility-view"/></style>
     <property name="spacing">18</property>
     <property name="margin-top">24</property>
     <property name="margin-bottom">24</property>
@@ -20,14 +21,14 @@
               <object class="GtkLabel">
                 <property name="label">Services Manager</property>
                 <property name="xalign">0</property>
-                <style><class name="title-1"/></style>
+                <style><class name="view-title"/></style>
               </object>
             </child>
             <child>
               <object class="GtkLabel" id="status_label">
                 <property name="label">Loading system services...</property>
                 <property name="xalign">0</property>
-                <style><class name="dim-label"/></style>
+                <style><class name="status-line"/></style>
               </object>
             </child>
           </object>
@@ -43,6 +44,7 @@
     <child>
       <object class="GtkBox">
         <property name="spacing">12</property>
+        <style><class name="column-header"/></style>
         <child>
           <object class="GtkLabel">
             <property name="label">Unit</property>
@@ -73,6 +75,7 @@
       <object class="GtkScrolledWindow">
         <property name="vexpand">true</property>
         <property name="hscrollbar-policy">never</property>
+        <style><class name="data-list"/></style>
         <child>
           <object class="GtkListBox" id="service_list">
             <property name="selection-mode">single</property>
@@ -85,6 +88,7 @@
       <object class="GtkBox">
         <property name="spacing">8</property>
         <property name="halign">end</property>
+        <style><class name="action-bar"/></style>
         <child>
           <object class="GtkButton" id="start_button">
             <property name="label">Start</property>

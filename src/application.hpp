@@ -21,8 +21,10 @@ class Application {
    private:
     static void onActivate(GApplication* application, gpointer userData);
     void activate();
+    void loadStyle();
 
     AdwApplication* application_;
+    bool styleLoaded_;
     std::unique_ptr<MainWindow> mainWindow_;
 };
 

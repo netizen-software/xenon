@@ -3,6 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <object class="GtkBox" id="resource_monitor_view">
     <property name="orientation">vertical</property>
+    <style><class name="utility-view"/></style>
     <property name="spacing">24</property>
     <property name="margin-top">24</property>
     <property name="margin-bottom">24</property>
@@ -25,14 +26,14 @@
               <object class="GtkLabel">
                 <property name="label">Resource Monitor</property>
                 <property name="xalign">0</property>
-                <style><class name="title-1"/></style>
+                <style><class name="view-title"/></style>
               </object>
             </child>
             <child>
               <object class="GtkLabel">
                 <property name="label">Live CPU and memory usage</property>
                 <property name="xalign">0</property>
-                <style><class name="dim-label"/></style>
+                <style><class name="view-subtitle"/></style>
               </object>
             </child>
           </object>
@@ -46,6 +47,7 @@
       <object class="GtkGrid">
         <property name="row-spacing">18</property>
         <property name="column-spacing">24</property>
+        <style><class name="metric-panel"/></style>
         <child>
           <object class="GtkLabel">
             <property name="label">CPU Usage</property>
@@ -58,7 +60,7 @@
           <object class="GtkLabel" id="cpu_value">
             <property name="label">Calculating...</property>
             <property name="xalign">1</property>
-            <style><class name="title-3"/></style>
+            <style><class name="metric-value"/></style>
             <layout><property name="column">1</property><property name="row">0</property></layout>
           </object>
         </child>
@@ -74,7 +76,7 @@
           <object class="GtkLabel" id="memory_value">
             <property name="label">Calculating...</property>
             <property name="xalign">1</property>
-            <style><class name="title-3"/></style>
+            <style><class name="metric-value"/></style>
             <layout><property name="column">1</property><property name="row">1</property></layout>
           </object>
         </child>
@@ -90,11 +92,12 @@
             <property name="orientation">vertical</property>
             <property name="spacing">8</property>
             <property name="vexpand">true</property>
+            <style><class name="graph-panel"/></style>
             <child>
               <object class="GtkLabel">
                 <property name="label">CPU History</property>
                 <property name="xalign">0</property>
-                <style><class name="heading"/></style>
+                <style><class name="section-header"/></style>
               </object>
             </child>
             <child>
@@ -112,11 +115,12 @@
             <property name="orientation">vertical</property>
             <property name="spacing">8</property>
             <property name="vexpand">true</property>
+            <style><class name="graph-panel"/></style>
             <child>
               <object class="GtkLabel">
                 <property name="label">Memory History</property>
                 <property name="xalign">0</property>
-                <style><class name="heading"/></style>
+                <style><class name="section-header"/></style>
               </object>
             </child>
             <child>
