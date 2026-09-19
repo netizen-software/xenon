@@ -9,7 +9,7 @@ namespace xenon {
 class MainWindow;
 
 class Application {
-  public:
+   public:
     Application();
     ~Application();
 
@@ -18,7 +18,7 @@ class Application {
 
     int run(int argc, char* argv[]);
 
-  private:
+   private:
     static void onActivate(GApplication* application, gpointer userData);
     void activate();
 

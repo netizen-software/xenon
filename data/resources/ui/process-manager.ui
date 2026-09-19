@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkBox" id="process_manager_view">
+    <property name="orientation">vertical</property>
+    <property name="spacing">18</property>
+    <property name="margin-top">24</property>
+    <property name="margin-bottom">24</property>
+    <property name="margin-start">24</property>
+    <property name="margin-end">24</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="label">Process Manager</property>
+        <property name="xalign">0</property>
+        <style><class name="title-1"/></style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="status_label">
+        <property name="label">Select a process to send a termination request.</property>
+        <property name="xalign">0</property>
+        <style><class name="dim-label"/></style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="vexpand">true</property>
+        <property name="hscrollbar-policy">never</property>
+        <child>
+          <object class="GtkListBox" id="process_list">
+            <property name="selection-mode">single</property>
+            <property name="show-separators">true</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkButton" id="terminate_button">
+        <property name="label">Terminate Process</property>
+        <property name="sensitive">false</property>
+        <property name="halign">end</property>
+        <style><class name="destructive-action"/></style>
+      </object>
+    </child>
+  </object>
+</interface>
