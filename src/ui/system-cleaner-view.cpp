@@ -96,6 +96,7 @@ void SystemCleanerView::refresh() {
             auto* size = gtk_label_new(sizeText);
 
             gtk_widget_set_hexpand(labels, TRUE);
+            gtk_widget_add_css_class(checkButton, "cleaner-check");
             gtk_label_set_xalign(GTK_LABEL(title), 0);
             gtk_label_set_xalign(GTK_LABEL(description), 0);
             gtk_label_set_xalign(GTK_LABEL(size), 1);

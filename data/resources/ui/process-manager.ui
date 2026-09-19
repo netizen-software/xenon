@@ -3,28 +3,41 @@
   <requires lib="gtk" version="4.0"/>
   <object class="GtkBox" id="process_manager_view">
     <property name="orientation">vertical</property>
+    <style><class name="utility-view"/></style>
     <property name="spacing">18</property>
     <property name="margin-top">24</property>
     <property name="margin-bottom">24</property>
     <property name="margin-start">24</property>
     <property name="margin-end">24</property>
     <child>
-      <object class="GtkLabel">
-        <property name="label">Process Manager</property>
-        <property name="xalign">0</property>
-        <style><class name="title-1"/></style>
+      <object class="GtkBox">
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkImage">
+            <property name="icon-name">view-list-symbolic</property>
+            <property name="pixel-size">32</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="label">Process Manager</property>
+            <property name="xalign">0</property>
+            <style><class name="view-title"/></style>
+          </object>
+        </child>
       </object>
     </child>
     <child>
       <object class="GtkLabel" id="status_label">
         <property name="label">Select a process to send a termination request.</property>
         <property name="xalign">0</property>
-        <style><class name="dim-label"/></style>
+        <style><class name="status-line"/></style>
       </object>
     </child>
     <child>
       <object class="GtkBox">
         <property name="spacing">12</property>
+        <style><class name="column-header"/></style>
         <child>
           <object class="GtkLabel">
             <property name="label">Process</property>
@@ -63,6 +76,7 @@
       <object class="GtkScrolledWindow">
         <property name="vexpand">true</property>
         <property name="hscrollbar-policy">never</property>
+        <style><class name="data-list"/></style>
         <child>
           <object class="GtkListBox" id="process_list">
             <property name="selection-mode">single</property>
