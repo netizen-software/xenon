@@ -1,6 +1,6 @@
 # Xenon
 
-Xenon is a native GNOME system monitor for Ubuntu, built with C++20, GTK4, and Libadwaita.
+Xenon is a native Ubuntu system utility suite built with C++20, GTK4, and Libadwaita. Its desktop-style interface combines monitoring and system management tools in one focused workspace.
 
 ## Building
 
@@ -36,10 +36,6 @@ meson test -C build --print-errorlogs
 - Services Manager: lists systemd service enablement and runtime state; selected services can be started, stopped, enabled, or disabled with system authorization.
 - System Cleaner: selectively clears APT package archives, crash reports, rotated logs, application caches, and desktop trash.
 - Repository Manager: adds, enables, disables, and deletes APT source files with system authorization.
-
-## TODO
-
-- Additional utilities are planned.
 
 # License
 This repository is licensed under the **Unlicense** license.
