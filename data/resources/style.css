@@ -14,6 +14,10 @@ window {
   color: @xenon-ink;
 }
 
+stack {
+  background: @xenon-canvas;
+}
+
 .app-sidebar {
   background: @xenon-sidebar;
   min-width: 224px;
@@ -67,6 +71,7 @@ headerbar {
 
 .utility-view {
   background: @xenon-canvas;
+  color: @xenon-ink;
   padding: 30px 34px;
 }
 
@@ -108,6 +113,17 @@ headerbar {
   background: @xenon-panel;
   border: 1px solid @xenon-border;
   border-radius: 6px;
+}
+
+.data-list viewport,
+.data-list list,
+.data-list list row {
+  background: @xenon-panel;
+  color: @xenon-ink;
+}
+
+.data-list list row:hover {
+  background: #edf5f5;
 }
 
 .data-list row {
