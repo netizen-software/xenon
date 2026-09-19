@@ -10,6 +10,9 @@ constexpr char PROCESS_LIST_ID[] = "process_list";
 constexpr char TERMINATE_BUTTON_ID[] = "terminate_button";
 constexpr char STATUS_LABEL_ID[] = "status_label";
 constexpr char PROCESS_ID_KEY[] = "xenon-process-id";
+constexpr int PID_COLUMN_WIDTH = 88;
+constexpr int STATE_COLUMN_WIDTH = 150;
+constexpr int MEMORY_COLUMN_WIDTH = 120;
 
 }  // namespace
 
@@ -84,21 +87,32 @@ void ProcessManagerView::refresh() {
             auto* row = gtk_list_box_row_new();
             auto* content = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 12);
             auto* name = gtk_label_new(process.name.c_str());
+            auto* pidText = g_strdup_printf("%u", process.pid);
+            auto* pid = gtk_label_new(pidText);
+            auto* state = gtk_label_new(process.state.c_str());
             auto* memoryText = g_format_size(process.memoryBytes);
-            auto* details =
-                g_strdup_printf("PID %u  %s  %s", process.pid, process.state.c_str(), memoryText);
-            auto* metadata = gtk_label_new(details);
+            auto* memory = gtk_label_new(memoryText);
 
             gtk_widget_set_hexpand(name, TRUE);
             gtk_label_set_xalign(GTK_LABEL(name), 0);
-            gtk_label_set_xalign(GTK_LABEL(metadata), 1);
-            gtk_widget_add_css_class(metadata, "dim-label");
+            gtk_label_set_ellipsize(GTK_LABEL(name), PANGO_ELLIPSIZE_END);
+            gtk_widget_set_size_request(pid, PID_COLUMN_WIDTH, -1);
+            gtk_widget_set_size_request(state, STATE_COLUMN_WIDTH, -1);
+            gtk_widget_set_size_request(memory, MEMORY_COLUMN_WIDTH, -1);
+            gtk_label_set_xalign(GTK_LABEL(pid), 1);
+            gtk_label_set_xalign(GTK_LABEL(state), 0);
+            gtk_label_set_xalign(GTK_LABEL(memory), 1);
+            gtk_widget_add_css_class(pid, "dim-label");
+            gtk_widget_add_css_class(state, "dim-label");
+            gtk_widget_add_css_class(memory, "dim-label");
             gtk_box_append(GTK_BOX(content), name);
-            gtk_box_append(GTK_BOX(content), metadata);
+            gtk_box_append(GTK_BOX(content), pid);
+            gtk_box_append(GTK_BOX(content), state);
+            gtk_box_append(GTK_BOX(content), memory);
             gtk_list_box_row_set_child(GTK_LIST_BOX_ROW(row), content);
             g_object_set_data(G_OBJECT(row), PROCESS_ID_KEY, GUINT_TO_POINTER(process.pid));
             gtk_list_box_append(processList_, row);
-            g_free(details);
+            g_free(pidText);
             g_free(memoryText);
         }
     } catch (const std::exception&) {
