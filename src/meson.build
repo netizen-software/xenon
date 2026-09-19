@@ -3,6 +3,7 @@ XENON_INCLUDE_DIR = include_directories('.')
 XENON_CORE = static_library(
   'xenon-core',
   [
+    'core/cleaner/system-cleaner.cpp',
     'core/processes/process-manager.cpp',
     'core/resources/resource-monitor.cpp',
     'core/services/service-manager.cpp',
@@ -17,6 +18,7 @@ executable(
     'main.cpp',
     'application.cpp',
     'main-window.cpp',
+    'ui/system-cleaner-view.cpp',
     'ui/process-manager-view.cpp',
     'ui/resource-monitor-view.cpp',
     'ui/services-manager-view.cpp',
