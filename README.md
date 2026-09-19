@@ -2,6 +2,9 @@
 
 Xenon is a native Ubuntu system utility suite built with C++20, GTK4, and Libadwaita. Its desktop-style interface combines monitoring and system management tools in one focused workspace.
 
+<img width="632" alt="xenon" src="https://github.com/user-attachments/assets/f9c0e333-bf0f-4638-84b1-36c13a383387" />
+
+
 ## Building
 
 Xenon targets Ubuntu 24.04 LTS. Install the build dependencies:
@@ -38,5 +41,5 @@ meson test -C build --print-errorlogs
 - Repository Manager: adds, enables, disables, and deletes APT source files with system authorization.
 
 # License
-This repository is licensed under the **Unlicense** license.
+This repository is licensed under the **Unlicense** license.\
 For more information, click [here](https://unlicense.org/).
