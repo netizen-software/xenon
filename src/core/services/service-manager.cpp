@@ -16,6 +16,10 @@ constexpr char SYSTEMD_OBJECT_PATH[] = "/org/freedesktop/systemd1";
 constexpr char SYSTEMD_MANAGER_INTERFACE[] = "org.freedesktop.systemd1.Manager";
 constexpr char LIST_UNIT_FILES_METHOD[] = "ListUnitFiles";
 constexpr char LIST_UNITS_METHOD[] = "ListUnits";
+constexpr char START_UNIT_METHOD[] = "StartUnit";
+constexpr char STOP_UNIT_METHOD[] = "StopUnit";
+constexpr char ENABLE_UNIT_FILES_METHOD[] = "EnableUnitFiles";
+constexpr char DISABLE_UNIT_FILES_METHOD[] = "DisableUnitFiles";
 
 void throwGlibError(const char* context, GError* error) {
     const std::string message = error == nullptr ? "unknown error" : error->message;
@@ -24,6 +28,33 @@ void throwGlibError(const char* context, GError* error) {
     }
 
     throw std::runtime_error(std::string(context) + ": " + message);
+}
+
+GDBusProxy* createSystemdProxy() {
+    GError* error = nullptr;
+    auto* proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SYSTEM, G_DBUS_PROXY_FLAGS_NONE, nullptr,
+                                                SYSTEMD_BUS_NAME, SYSTEMD_OBJECT_PATH,
+                                                SYSTEMD_MANAGER_INTERFACE, nullptr, &error);
+    if (proxy == nullptr) {
+        throwGlibError("Unable to connect to systemd", error);
+    }
+
+    return proxy;
+}
+
+void callSystemdMethod(const char* methodName, GVariant* parameters) {
+    auto* proxy = createSystemdProxy();
+    auto proxyCleanup =
+        std::unique_ptr<GDBusProxy, decltype(&g_object_unref)>(proxy, &g_object_unref);
+    GError* error = nullptr;
+    auto* result = g_dbus_proxy_call_sync(proxy, methodName, parameters,
+                                          G_DBUS_CALL_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION, -1,
+                                          nullptr, &error);
+    if (result == nullptr) {
+        throwGlibError("Unable to update system service", error);
+    }
+
+    g_variant_unref(result);
 }
 
 }  // namespace
@@ -60,17 +91,23 @@ void ServiceManager::addRuntimeStates(
     }
 }
 
-std::vector<ServiceInfo> ServiceManager::listServices() const {
-    GError* error = nullptr;
-    auto* proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SYSTEM, G_DBUS_PROXY_FLAGS_NONE, nullptr,
-                                                SYSTEMD_BUS_NAME, SYSTEMD_OBJECT_PATH,
-                                                SYSTEMD_MANAGER_INTERFACE, nullptr, &error);
-    if (proxy == nullptr) {
-        throwGlibError("Unable to connect to systemd", error);
-    }
+void ServiceManager::disableService(std::string_view unitName) const {
+    const std::string unitNameCopy(unitName);
+    const char* unitFiles[] = {unitNameCopy.c_str(), nullptr};
+    callSystemdMethod(DISABLE_UNIT_FILES_METHOD, g_variant_new("(^asb)", unitFiles, FALSE));
+}
 
+void ServiceManager::enableService(std::string_view unitName) const {
+    const std::string unitNameCopy(unitName);
+    const char* unitFiles[] = {unitNameCopy.c_str(), nullptr};
+    callSystemdMethod(ENABLE_UNIT_FILES_METHOD, g_variant_new("(^asbb)", unitFiles, FALSE, FALSE));
+}
+
+std::vector<ServiceInfo> ServiceManager::listServices() const {
+    auto* proxy = createSystemdProxy();
     auto proxyCleanup =
         std::unique_ptr<GDBusProxy, decltype(&g_object_unref)>(proxy, &g_object_unref);
+    GError* error = nullptr;
     auto* result = g_dbus_proxy_call_sync(proxy, LIST_UNIT_FILES_METHOD, nullptr,
                                           G_DBUS_CALL_FLAGS_NONE, -1, nullptr, &error);
     if (result == nullptr) {
@@ -123,6 +160,16 @@ std::vector<ServiceInfo> ServiceManager::listServices() const {
     std::vector<ServiceInfo> services = filterServiceUnits(unitFiles);
     addRuntimeStates(services, unitStates);
     return services;
+}
+
+void ServiceManager::startService(std::string_view unitName) const {
+    const std::string unitNameCopy(unitName);
+    callSystemdMethod(START_UNIT_METHOD, g_variant_new("(ss)", unitNameCopy.c_str(), "replace"));
+}
+
+void ServiceManager::stopService(std::string_view unitName) const {
+    const std::string unitNameCopy(unitName);
+    callSystemdMethod(STOP_UNIT_METHOD, g_variant_new("(ss)", unitNameCopy.c_str(), "replace"));
 }
 
 }  // namespace xenon

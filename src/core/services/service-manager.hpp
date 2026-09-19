@@ -2,6 +2,7 @@
 
 #include <span>
 #include <string>
+#include <string_view>
 #include <utility>
 #include <vector>
 
@@ -15,7 +16,11 @@ struct ServiceInfo {
 
 class ServiceManager {
    public:
+    void disableService(std::string_view unitName) const;
+    void enableService(std::string_view unitName) const;
     std::vector<ServiceInfo> listServices() const;
+    void startService(std::string_view unitName) const;
+    void stopService(std::string_view unitName) const;
 
     static std::vector<ServiceInfo> filterServiceUnits(
         std::span<const std::pair<std::string, std::string>> unitFiles);

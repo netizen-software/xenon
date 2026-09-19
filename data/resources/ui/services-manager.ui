@@ -75,8 +75,40 @@
         <property name="hscrollbar-policy">never</property>
         <child>
           <object class="GtkListBox" id="service_list">
-            <property name="selection-mode">none</property>
+            <property name="selection-mode">single</property>
             <property name="show-separators">true</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="spacing">8</property>
+        <property name="halign">end</property>
+        <child>
+          <object class="GtkButton" id="start_button">
+            <property name="label">Start</property>
+            <property name="sensitive">false</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="stop_button">
+            <property name="label">Stop</property>
+            <property name="sensitive">false</property>
+            <style><class name="destructive-action"/></style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="enable_button">
+            <property name="label">Enable</property>
+            <property name="sensitive">false</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="disable_button">
+            <property name="label">Disable</property>
+            <property name="sensitive">false</property>
+            <style><class name="destructive-action"/></style>
           </object>
         </child>
       </object>
