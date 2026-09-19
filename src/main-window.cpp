@@ -2,6 +2,7 @@
 
 #include "ui/process-manager-view.hpp"
 #include "ui/resource-monitor-view.hpp"
+#include "ui/services-manager-view.hpp"
 
 namespace xenon {
 
@@ -17,10 +18,13 @@ MainWindow::MainWindow(AdwApplication* application)
     auto* viewStack = ADW_VIEW_STACK(adw_view_stack_new());
     auto* viewSwitcher = adw_view_switcher_new();
 
+    servicesManagerView_ = std::make_unique<ServicesManagerView>();
+
     adw_view_stack_add_titled(viewStack, resourceMonitorView_->getWidget(), "resources",
                               "Resources");
     adw_view_stack_add_titled(viewStack, processManagerView_->getWidget(), "processes",
                               "Processes");
+    adw_view_stack_add_titled(viewStack, servicesManagerView_->getWidget(), "services", "Services");
     adw_view_switcher_set_stack(ADW_VIEW_SWITCHER(viewSwitcher), viewStack);
     adw_header_bar_set_title_widget(headerBar, viewSwitcher);
     adw_toolbar_view_add_top_bar(toolbarView, GTK_WIDGET(headerBar));

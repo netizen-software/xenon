@@ -11,6 +11,7 @@ project(
 GNOME = import('gnome')
 GTK = dependency('gtk4', version: '>= 4.12')
 ADWAITA = dependency('libadwaita-1', version: '>= 1.4')
+GIO = dependency('gio-2.0', version: '>= 2.74')
 
 subdir('data')
 subdir('src')
