@@ -136,6 +136,22 @@ headerbar {
   color: @xenon-ink;
 }
 
+.cleaner-check check {
+  background: @xenon-panel;
+  border: 1px solid #aeb8c4;
+  border-radius: 3px;
+  color: #ffffff;
+}
+
+.cleaner-check check:hover {
+  border-color: @xenon-accent;
+}
+
+.cleaner-check check:checked {
+  background: @xenon-accent;
+  border-color: @xenon-accent;
+}
+
 .toolbar-row,
 .column-header,
 .action-bar {
