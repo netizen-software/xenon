@@ -53,6 +53,14 @@
         </child>
         <child>
           <object class="GtkLabel">
+            <property name="label">Runtime</property>
+            <property name="width-request">120</property>
+            <property name="xalign">1</property>
+            <style><class name="heading"/></style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
             <property name="label">Enablement</property>
             <property name="width-request">140</property>
             <property name="xalign">1</property>

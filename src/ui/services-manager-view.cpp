@@ -10,6 +10,7 @@ constexpr char SERVICE_LIST_ID[] = "service_list";
 constexpr char STATUS_LABEL_ID[] = "status_label";
 constexpr char REFRESH_BUTTON_ID[] = "refresh_button";
 constexpr int ENABLEMENT_COLUMN_WIDTH = 140;
+constexpr int RUNTIME_COLUMN_WIDTH = 120;
 
 }  // namespace
 
@@ -49,15 +50,20 @@ void ServicesManagerView::refresh() {
             auto* row = gtk_list_box_row_new();
             auto* content = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 12);
             auto* unitName = gtk_label_new(service.unitName.c_str());
+            auto* runtimeState = gtk_label_new(service.runtimeState.c_str());
             auto* enablement = gtk_label_new(service.enablement.c_str());
 
             gtk_widget_set_hexpand(unitName, TRUE);
             gtk_label_set_xalign(GTK_LABEL(unitName), 0);
             gtk_label_set_ellipsize(GTK_LABEL(unitName), PANGO_ELLIPSIZE_END);
+            gtk_widget_set_size_request(runtimeState, RUNTIME_COLUMN_WIDTH, -1);
             gtk_widget_set_size_request(enablement, ENABLEMENT_COLUMN_WIDTH, -1);
+            gtk_label_set_xalign(GTK_LABEL(runtimeState), 1);
             gtk_label_set_xalign(GTK_LABEL(enablement), 1);
+            gtk_widget_add_css_class(runtimeState, "dim-label");
             gtk_widget_add_css_class(enablement, "dim-label");
             gtk_box_append(GTK_BOX(content), unitName);
+            gtk_box_append(GTK_BOX(content), runtimeState);
             gtk_box_append(GTK_BOX(content), enablement);
             gtk_list_box_row_set_child(GTK_LIST_BOX_ROW(row), content);
             gtk_list_box_append(serviceList_, row);
