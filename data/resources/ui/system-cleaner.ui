@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkBox" id="system_cleaner_view">
+    <property name="orientation">vertical</property>
+    <property name="spacing">18</property>
+    <property name="margin-top">24</property>
+    <property name="margin-bottom">24</property>
+    <property name="margin-start">24</property>
+    <property name="margin-end">24</property>
+    <child>
+      <object class="GtkBox">
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">2</property>
+            <property name="hexpand">true</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">System Cleaner</property>
+                <property name="xalign">0</property>
+                <style><class name="title-1"/></style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="status_label">
+                <property name="label">Inspecting cleanup data...</property>
+                <property name="xalign">0</property>
+                <style><class name="dim-label"/></style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="refresh_button">
+            <property name="icon-name">view-refresh-symbolic</property>
+            <property name="tooltip-text">Refresh cleanup sizes</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="vexpand">true</property>
+        <property name="hscrollbar-policy">never</property>
+        <child>
+          <object class="GtkListBox" id="cleaner_list">
+            <property name="selection-mode">none</property>
+            <property name="show-separators">true</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkButton" id="clean_button">
+        <property name="label">Clean Selected</property>
+        <property name="halign">end</property>
+        <style><class name="suggested-action"/></style>
+      </object>
+    </child>
+  </object>
+</interface>

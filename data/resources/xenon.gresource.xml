@@ -4,5 +4,6 @@
     <file>ui/process-manager.ui</file>
     <file>ui/resource-monitor.ui</file>
     <file>ui/services-manager.ui</file>
+    <file>ui/system-cleaner.ui</file>
   </gresource>
 </gresources>

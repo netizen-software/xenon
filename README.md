@@ -34,10 +34,10 @@ meson test -C build --print-errorlogs
 - Resource Monitor: live CPU and memory usage from `/proc`, including usage history graphs.
 - Process Manager: lists running processes with PID, state, and resident memory; selected processes can receive a termination request.
 - Services Manager: lists systemd service enablement and runtime state; selected services can be started, stopped, enabled, or disabled with system authorization.
+- System Cleaner: selectively clears APT package archives, crash reports, rotated logs, application caches, and desktop trash.
 
 ## TODO
 
-- System Cleaner
 - Repository Manager
 
 # License

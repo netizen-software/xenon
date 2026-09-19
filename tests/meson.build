@@ -1,4 +1,11 @@
 if get_option('tests')
+  systemCleanerTest = executable(
+    'system-cleaner-test',
+    'core/cleaner/system-cleaner-test.cpp',
+    include_directories: include_directories('../src'),
+    link_with: XENON_CORE,
+  )
+
   processManagerTest = executable(
     'process-manager-test',
     'core/processes/process-manager-test.cpp',
@@ -24,4 +31,5 @@ if get_option('tests')
   test('process-manager', processManagerTest)
   test('resource-monitor', resourceMonitorTest)
   test('service-manager', serviceManagerTest)
+  test('system-cleaner', systemCleanerTest)
 endif
