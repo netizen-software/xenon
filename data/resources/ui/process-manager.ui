@@ -10,10 +10,21 @@
     <property name="margin-start">24</property>
     <property name="margin-end">24</property>
     <child>
-      <object class="GtkLabel">
-        <property name="label">Process Manager</property>
-        <property name="xalign">0</property>
-        <style><class name="view-title"/></style>
+      <object class="GtkBox">
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkImage">
+            <property name="icon-name">view-list-symbolic</property>
+            <property name="pixel-size">32</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="label">Process Manager</property>
+            <property name="xalign">0</property>
+            <style><class name="view-title"/></style>
+          </object>
+        </child>
       </object>
     </child>
     <child>

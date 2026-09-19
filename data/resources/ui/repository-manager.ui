@@ -13,6 +13,12 @@
       <object class="GtkBox">
         <property name="spacing">12</property>
         <child>
+          <object class="GtkImage">
+            <property name="icon-name">folder-remote-symbolic</property>
+            <property name="pixel-size">32</property>
+          </object>
+        </child>
+        <child>
           <object class="GtkBox">
             <property name="orientation">vertical</property>
             <property name="spacing">2</property>
