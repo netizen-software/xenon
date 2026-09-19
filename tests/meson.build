@@ -20,6 +20,14 @@ if get_option('tests')
     link_with: XENON_CORE,
   )
 
+  repositoryManagerTest = executable(
+    'repository-manager-test',
+    'core/repositories/repository-manager-test.cpp',
+    dependencies: GIO,
+    include_directories: include_directories('../src'),
+    link_with: XENON_CORE,
+  )
+
   serviceManagerTest = executable(
     'service-manager-test',
     'core/services/service-manager-test.cpp',
@@ -29,6 +37,7 @@ if get_option('tests')
   )
 
   test('process-manager', processManagerTest)
+  test('repository-manager', repositoryManagerTest)
   test('resource-monitor', resourceMonitorTest)
   test('service-manager', serviceManagerTest)
   test('system-cleaner', systemCleanerTest)
