@@ -80,5 +80,51 @@
         </child>
       </object>
     </child>
+    <child>
+      <object class="GtkBox">
+        <property name="spacing">18</property>
+        <property name="homogeneous">true</property>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">8</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">CPU History</property>
+                <property name="xalign">0</property>
+                <style><class name="heading"/></style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="cpu_graph">
+                <property name="content-width">360</property>
+                <property name="content-height">160</property>
+                <property name="hexpand">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">8</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">Memory History</property>
+                <property name="xalign">0</property>
+                <style><class name="heading"/></style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkDrawingArea" id="memory_graph">
+                <property name="content-width">360</property>
+                <property name="content-height">160</property>
+                <property name="hexpand">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
   </object>
 </interface>
