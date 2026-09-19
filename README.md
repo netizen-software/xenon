@@ -35,10 +35,11 @@ meson test -C build --print-errorlogs
 - Process Manager: lists running processes with PID, state, and resident memory; selected processes can receive a termination request.
 - Services Manager: lists systemd service enablement and runtime state; selected services can be started, stopped, enabled, or disabled with system authorization.
 - System Cleaner: selectively clears APT package archives, crash reports, rotated logs, application caches, and desktop trash.
+- Repository Manager: adds, enables, disables, and deletes APT source files with system authorization.
 
 ## TODO
 
-- Repository Manager
+- Additional utilities are planned.
 
 # License
 This repository is licensed under the **Unlicense** license.

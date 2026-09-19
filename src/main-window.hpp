@@ -7,6 +7,7 @@
 namespace xenon {
 
 class ProcessManagerView;
+class RepositoryManagerView;
 class ResourceMonitorView;
 class ServicesManagerView;
 class SystemCleanerView;
@@ -24,6 +25,7 @@ class MainWindow {
    private:
     AdwApplicationWindow* window_;
     std::unique_ptr<ProcessManagerView> processManagerView_;
+    std::unique_ptr<RepositoryManagerView> repositoryManagerView_;
     std::unique_ptr<ResourceMonitorView> resourceMonitorView_;
     std::unique_ptr<ServicesManagerView> servicesManagerView_;
     std::unique_ptr<SystemCleanerView> systemCleanerView_;
