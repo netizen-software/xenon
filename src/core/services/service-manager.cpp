@@ -3,6 +3,7 @@
 #include <gio/gio.h>
 
 #include <algorithm>
+#include <filesystem>
 #include <memory>
 #include <stdexcept>
 #include <string_view>
@@ -33,7 +34,8 @@ std::vector<ServiceInfo> ServiceManager::filterServiceUnits(
     std::span<const std::pair<std::string, std::string>> unitFiles) {
     std::vector<ServiceInfo> services;
 
-    for (const auto& [unitName, enablement] : unitFiles) {
+    for (const auto& [unitFile, enablement] : unitFiles) {
+        const std::string unitName = std::filesystem::path(unitFile).filename().string();
         if (std::string_view(unitName).ends_with(".service")) {
             services.push_back(
                 {.unitName = unitName, .enablement = enablement, .runtimeState = "inactive"});

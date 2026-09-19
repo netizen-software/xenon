@@ -7,9 +7,9 @@
 
 int main() {
     const std::vector<std::pair<std::string, std::string>> unitFiles{
-        {"beta.service", "disabled"},
-        {"alpha.service", "enabled"},
-        {"systemd.socket", "static"},
+        {"/usr/lib/systemd/system/beta.service", "disabled"},
+        {"/etc/systemd/system/alpha.service", "enabled"},
+        {"/usr/lib/systemd/system/systemd.socket", "static"},
     };
     std::vector<xenon::ServiceInfo> services = xenon::ServiceManager::filterServiceUnits(unitFiles);
 
