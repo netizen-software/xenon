@@ -13,6 +13,15 @@ if get_option('tests')
     link_with: XENON_CORE,
   )
 
+  serviceManagerTest = executable(
+    'service-manager-test',
+    'core/services/service-manager-test.cpp',
+    dependencies: GIO,
+    include_directories: include_directories('../src'),
+    link_with: XENON_CORE,
+  )
+
   test('process-manager', processManagerTest)
   test('resource-monitor', resourceMonitorTest)
+  test('service-manager', serviceManagerTest)
 endif

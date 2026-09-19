@@ -3,5 +3,6 @@
   <gresource prefix="/io/github/netizen_software/Xenon">
     <file>ui/process-manager.ui</file>
     <file>ui/resource-monitor.ui</file>
+    <file>ui/services-manager.ui</file>
   </gresource>
 </gresources>
